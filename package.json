@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/devAsmi/tech-blogs#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "brcypt": "^1.0.1",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^8.2.0",
