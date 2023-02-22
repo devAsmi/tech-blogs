@@ -12,7 +12,10 @@ router.get("/homepage", (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/login");
   } else {
-    res.render("homepage");
+    res.render("homepage", {
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
   }
 });
 

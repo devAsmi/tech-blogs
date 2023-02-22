@@ -1,24 +1,27 @@
 <div class="container">
   <div class="card text-white bg-info mb-3 m-5" style="max-width:30rem;">
-    <form class ="card-header" id="login">
-        <h4 class="card-title">Login</h4>
-    <div class="card-body">
+    <form class="card-header" id="login-form">
+      <h4 class="card-title">Login</h4>
+      <div class="card-body">
         <div class="m-3">
           <label>Email:</label>
-        <input type="text" id="email-input"/>
+          <input type="text" id="email-input" />
         </div>
-         <div class="form-group m-3">
+        <div class="form-group m-3">
           <label>Password:</label>
-            <input type="password" id="password-input"/>
-            </div>
-        <div>
-        <button class="btn btn-wide btn-secondary m-1" type="submit">Login</button>
+          <input type="password" id="password-input" />
         </div>
-    </div>
-
+        <div>
+          <button
+            class="btn btn-wide btn-secondary m-1"
+            type="submit"
+          >Login</button>
+        </div>
+      </div>
     </form>
     <div>
-    <a href="/signup" class="text-light">Create a New Account</a>
-  </div>
+      <a href="/signup" class="text-light">Create a New Account</a>
     </div>
+  </div>
 </div>
+<script src="/js/login.js"></script>
