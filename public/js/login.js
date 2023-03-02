@@ -21,5 +21,7 @@ const checkUser = async (event) => {
   }
 };
 
-// checkUser should be defined before it is used
-loginForm.addEventListener("submit", checkUser);
+if (loginForm) {
+  // checkUser should be defined before it is used
+  loginForm.addEventListener("submit", checkUser);
+}

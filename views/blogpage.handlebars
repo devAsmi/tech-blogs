@@ -8,19 +8,19 @@
     </div>
 </form>
 
-<div  class="mb-2 px-4 py-2 bg-secondary-subtle text-emphasis-primary border border-primary">
-    {{#each comments as |comment|}}
-      <div class="my-2 d-flex flex-column">
-        <div>
-          {{comment.content}}
-        </div>
-        <div class="fs-6">
-          {{comment.created_at}}
-          {{comment.user.user_name}}
-        </div>
-        <hr class="hr" />
-      </div>
-    {{/each}}
-</div>
+
+{{#each comments as |comment|}}
+  <div class="my-2 d-flex flex-column">
+    <div>
+      {{comment.content}}
+    </div>
+    <div class="fs-6">
+      {{comment.created_at}}
+      {{comment.user.user_name}}
+    </div>
+    <hr class="hr" />
+  </div>
+{{/each}}
+
 
 <script src="/js/comment.js" />

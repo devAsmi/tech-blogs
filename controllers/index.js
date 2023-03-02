@@ -7,6 +7,4 @@ router.use("/api", apiRoutes);
 router.use("/", homepageRoute);
 router.use("/signUp", signupRoutes);
 
-
-
 module.exports = router;
