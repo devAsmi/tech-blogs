@@ -28,13 +28,30 @@ router.get("/homepage", async (req, res) => {
   });
 });
 
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard", async (req, res) => {
+  // get all the blogs created by the logged in user
+  const blogData = await Blog.findAll({
+    where: { created_by: req.session.user_id },
+    include: [
+      {
+        model: User,
+        attributes: ["user_name"],
+      },
+    ],
+  });
+  const blogs = blogData
+    .map((blog) => blog.get({ plain: true }))
+    .map((blog) => {
+      blog.created_at = blog.created_at.toLocaleString();
+      return blog;
+    });
   if (!req.session.logged_in) {
     res.redirect("/login");
   } else {
     res.render("dashboard", {
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
+      blogs: blogs,
     });
   }
 });

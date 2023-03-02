@@ -1,8 +1,7 @@
 <h1>Dashboard</h1>
-<div>
-  Show my current blogs
-</div>
-
+{{#each blogs as |b|}}
+{{> detailblog blog=b }}
+{{/each}}
 <button
   type="button"
   class="btn btn-outline-success"

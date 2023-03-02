@@ -18,7 +18,7 @@ async function createNewBlog(e) {
     });
 
     if (response.ok) {
-      window.location.reload();
+      window.location.href = "/dashboard";
     } else {
       console.error("error creating blog");
     }
