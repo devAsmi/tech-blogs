@@ -20,4 +20,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  // create a new blog
+  try {
+    const blogData = await Blog.create({ ...req.body, created_at: Date.now() });
+    if (blogData) {
+      res.send(200);
+    } else {
+      res.send(400);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

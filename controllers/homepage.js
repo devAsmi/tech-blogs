@@ -39,6 +39,17 @@ router.get("/dashboard", (req, res) => {
   }
 });
 
+router.get("/dashboard/create", (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect("/login");
+  } else {
+    res.render("createblogpage", {
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+    });
+  }
+});
+
 router.get("/blog/:id", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/login");
@@ -71,7 +82,6 @@ router.get("/blog/:id", async (req, res) => {
         comment.created_at = comment.created_at.toLocaleString();
         return comment;
       });
-    console.log(comments);
 
     res.render("blogpage", {
       logged_in: req.session.logged_in,

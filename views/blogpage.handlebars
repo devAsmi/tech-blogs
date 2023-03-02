@@ -13,17 +13,24 @@
 <form id="comment-form">
     <div class="form-group">
         <input id="created-by" value={{user_id}} hidden />
-        <label for="comment">Add a comment </label>
-        <textarea type="text" id="comment-content"></textarea>
-        <button type="submit">Comment</button>
+        <label for="comment" class="form-label">Add a comment </label>
+        <textarea type="text" class="form-control mb-2" id="comment-content"></textarea>
+        <button type="submit" class="btn btn-sm btn-outline-primary">Comment</button>
     </div>
 </form>
 
-<div  class="mb-2 px-4 py-2 bg-primary-subtle text-emphasis-primary border border-primary">
+<div  class="mb-2 px-4 py-2 bg-secondary-subtle text-emphasis-primary border border-primary">
     {{#each comments as |comment|}}
-        {{comment.content}}
-        {{comment.created_at}}
-        {{comment.user.user_name}}
+      <div class="my-2 d-flex flex-column">
+        <div>
+          {{comment.content}}
+        </div>
+        <div class="fs-6">
+          {{comment.created_at}}
+          {{comment.user.user_name}}
+        </div>
+        <hr class="hr" />
+      </div>
     {{/each}}
 </div>
 
