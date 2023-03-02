@@ -1,0 +1,30 @@
+<div
+  class="mb-2 px-4 py-2 bg-primary-subtle text-emphasis-primary border border-primary"
+  id=`blog-{{blog.id}}`
+>
+  <div class="d-flex flex-row align-items-center justify-content-between">
+    <p class="display-6">{{blog.title}}</p>
+    <p>By {{blog.user.user_name}} at {{blog.created_at}}</p>
+  </div>
+  <div>
+    <p class="f-3">{{blog.description}}</p>
+  </div>
+</div>
+<form id="comment-form">
+    <div class="form-group">
+        <input id="created-by" value={{user_id}} hidden />
+        <label for="comment">Add a comment </label>
+        <textarea type="text" id="comment-content"></textarea>
+        <button type="submit">Comment</button>
+    </div>
+</form>
+
+<div  class="mb-2 px-4 py-2 bg-primary-subtle text-emphasis-primary border border-primary">
+    {{#each comments as |comment|}}
+        {{comment.content}}
+        {{comment.created_at}}
+        {{comment.user.user_name}}
+    {{/each}}
+</div>
+
+<script src="/js/comment.js" />
