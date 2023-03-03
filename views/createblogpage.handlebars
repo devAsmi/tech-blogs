@@ -1,12 +1,17 @@
+<div class="mb-4">
+  <a class="link-info" href="/dashboard">go back</a>
+</div>
 <form id="new-blog-form">
   <div class="form-group">
     <input id="blog-user" value={{user_id}} hidden />
+    <input id="blog-id" value="{{blog.id}}" hidden />
     <div class="mb-2">
       <label for="blog-title" class="form-label">Blog title</label>
       <input
         type="text"
         class="form-control"
         id="blog-title"
+        value="{{blog.title}}"
       ></input>
     </div>
     <div class="mb-2">
@@ -16,13 +21,28 @@
         class="form-control"
         id="blog-content"
         rows="10" 
-      ></textarea>
+      >{{blog.description}}</textarea>
     </div>
-    <button
+
+    {{#if blog.title}}
+      <button
       type="submit"
       class="btn btn-sm btn-outline-info"
-    >Create</button>
+      >Edit</button>
+
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-danger"
+        onclick="deleteBlog({{blog.id}})"
+      >Delete</button>
+    {{/if}}
+
+    {{#unless blog.title}}
+      <button
+        type="submit"
+        class="btn btn-sm btn-outline-info"
+      >Create</button>
+    {{/unless}}
   </div>
 </form>
-
 <script src="/js/dashboard.js" />

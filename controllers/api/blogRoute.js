@@ -35,4 +35,37 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  // create a new blog
+  try {
+    const blogData = await Blog.update(
+      { ...req.body, created_at: Date.now() },
+      { where: { id: req.params.id } }
+    );
+    if (blogData) {
+      res.send(200);
+    } else {
+      res.send(400);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  // create a new blog
+  try {
+    const blogData = await Blog.destroy({ where: { id: req.params.id } });
+    if (blogData) {
+      res.send(200);
+    } else {
+      res.send(400);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

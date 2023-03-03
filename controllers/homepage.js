@@ -67,6 +67,25 @@ router.get("/dashboard/create", (req, res) => {
   }
 });
 
+router.get("/dashboard/edit/:id", async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect("/login");
+  } else {
+    const blogData = await Blog.findByPk(req.params.id);
+
+    const blog = blogData.get({ plain: true });
+
+    console.log(blog);
+
+    blog.created_at = blog.created_at.toLocaleString();
+    res.render("createblogpage", {
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      blog: blog,
+    });
+  }
+});
+
 router.get("/blog/:id", async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect("/login");
